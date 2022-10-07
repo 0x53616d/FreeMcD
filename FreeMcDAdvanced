@@ -1,0 +1,15 @@
+"$1" = $1 | sed "s:~/:$PWD/:g"
+rm "$1/com.mcdonalds.gma.plist"
+if [ "$2" = "1500" ]
+then
+wget -O "$1/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002752101715292270/com.mcdonalds.gma.plist
+elif [ "$2" = "3000" ]
+then
+wget -O "$1/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002756465309777930/com.mcdonalds.gma.plist
+elif [ "$2" = "4500" ]
+then
+wget -O "$1/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002759911719043202/com.mcdonalds.gma.plist
+elif [ "$2" = "6000" ]
+then
+wget -O "$1/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002763011829805208/com.mcdonalds.gma.plist
+fi
