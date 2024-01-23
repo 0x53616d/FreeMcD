@@ -1,6 +1,8 @@
-```bash
 echo "Enter Container Directory:"
 read -r container
+
+echo "Enter Point Tier:"
+read -r pointtier
 
 container="$container" sed "s:~/:$PWD/:g" -i
 
@@ -27,4 +29,3 @@ esac
 
 wget -O "$container/com.mcdonalds.gma.plist" "$plist_url"
 echo "${pointtier} point plist has been applied and will take effect upon relaunching the app."
-```
