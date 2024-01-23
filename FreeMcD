@@ -1,25 +1,30 @@
-echo Enter Container Directory:
-read container
-"$container" = $container | sed "s:~/:$PWD/:g"
-rm "$container/com.mcdonalds.gma.plist"
-echo How many points does your item cost?
-read pointtier
-if [ "$pointtier" = "1500" ]
-then
-wget -O "$container/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002752101715292270/com.mcdonalds.gma.plist
-echo 1500 point plist has been applied and will take effect upon relaunching the app.
-elif [ "$pointtier" = "3000" ]
-then
-wget -O "$container/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002756465309777930/com.mcdonalds.gma.plist
-echo 3000 point plist has been applied and will take effect upon relaunching the app.
-elif [ "$pointtier" = "4500" ]
-then
-wget -O "$container/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002759911719043202/com.mcdonalds.gma.plist
-echo 4500 point plist has been applied and will take effect upon relaunching the app.
-elif [ "$pointtier" = "6000" ]
-then
-wget -O "$container/com.mcdonalds.gma.plist" https://cdn.discordapp.com/attachments/877417826665775104/1002763011829805208/com.mcdonalds.gma.plist
-echo 6000 point plist has been applied and will take effect upon relaunching the app.
-else
-echo If you didnt make a typo, the exploit is likely out of date.
-fi
+```bash
+echo "Enter Container Directory:"
+read -r container
+
+container="$container" sed "s:~/:$PWD/:g" -i
+
+plist_url=""
+
+case "$pointtier" in
+    "1500")
+        plist_url="https://cdn.discordapp.com/attachments/877417826665775104/1002752101715292270/com.mcdonalds.gma.plist"
+        ;;
+    "3000")
+        plist_url="https://cdn.discordapp.com/attachments/877417826665775104/1002756465309777930/com.mcdonalds.gma.plist"
+        ;;
+    "4500")
+        plist_url="https://cdn.discordapp.com/attachments/877417826665775104/1002759911719043202/com.mcdonalds.gma.plist"
+        ;;
+    "6000")
+        plist_url="https://cdn.discordapp.com/attachments/877417826665775104/1002763011829805208/com.mcdonalds.gma.plist"
+        ;;
+    *)
+        echo "If you didn't make a typo, the exploit is likely out of date."
+        exit 1
+        ;;
+esac
+
+wget -O "$container/com.mcdonalds.gma.plist" "$plist_url"
+echo "${pointtier} point plist has been applied and will take effect upon relaunching the app."
+```
